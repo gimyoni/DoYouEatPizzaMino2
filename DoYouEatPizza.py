@@ -47,8 +47,10 @@ class MainWindow(QMainWindow):
         self.central_widget.setCurrentWidget(fame_widget)
 
     def clickSub(self):
-        print("hello")
+        sub_widget = SubWidget(self)
 
+        self.central_widget.addWidget(sub_widget)
+        self.central_widget.setCurrentWidget(sub_widget)
 
     def clickRec(self):
 
@@ -495,6 +497,16 @@ class ClaWidget(QWidget):
         opacity = QGraphicsOpacityEffect(self.classicBtn)
         opacity.setOpacity(0)
         self.classicBtn.setGraphicsEffect(opacity)
+
+class SubWidget(QWidget):
+    def __init__(self, parent=None):
+        super(SubWidget, self).__init__(parent)
+
+        self.subBack = QLabel(self)
+        self.subBack.resize(800, 950)
+        pixmap = QPixmap("images/toppingBack.png")
+        self.subBack.setPixmap(QPixmap(pixmap))
+
 
 
 if __name__ == '__main__':
