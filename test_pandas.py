@@ -1,12 +1,20 @@
+import sys
 import pandas as pd
-from PySide2.QtCore import QDate, Qt
+import self as self
 
-df = pd.read_excel("pizzaInfo.xlsx", sheet_name = "Sheet1")
+from PySide2 import QtCore
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+from pandas import ExcelWriter, DataFrame
 
-df = df.sort_values(by=['가격'], ascending=[False])
-date = QDate.currentDate()
+#pizza_result = pd.read_excel("pizzaInfo.xlsx", sheet_name="Sheet1")
+#pizza_tem = pd.read_excel("pizzaInfo.xlsx", sheet_name="Sheet2")
 
-new_row = {'날짜':date.toString(Qt.ISODate), '메뉴':'직화 스테이크', '개수':1, '가격':33900}
+df1 = pd.DataFrame.from_records([{'날짜': '2020-11-30', '메뉴': '피자', '개수': 1, '가격': 3500}])
+df2 = pd.DataFrame.from_records([{'날짜': '2020-11-30', '메뉴': '피자', '개수': 1, '가격': 3500}])
 
-df = df.append(new_row, ignore_index=True)
-print(df)
+with ExcelWriter('path_to_file.xlsx') as writer:
+    df1.to_excel(writer, sheet_name='Sheet1')
+    df2.to_excel(writer, sheet_name='Sheet2')
+
