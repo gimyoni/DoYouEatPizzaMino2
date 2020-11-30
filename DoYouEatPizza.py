@@ -64,12 +64,12 @@ class MainWindow(QMainWindow):
             lambda img_name="rose_pasta", name="스파이시 씨푸드 로제 파스타", price=8800, menu="sidedish": self.click_menu(img_name,
                                                                                                                name,
                                                                                                                price,
-                                                                                                               menu))
 
         self.central_widget.addWidget(sub_widget)
         self.central_widget.setCurrentWidget(sub_widget)
 
     def clickRec(self):
+
         rec_widget = RecWidget(self)
         rec_widget.fameBtn.clicked.connect(self.clickFame)
         rec_widget.premiumBtn.clicked.connect(self.clickPre)
@@ -80,6 +80,7 @@ class MainWindow(QMainWindow):
         self.central_widget.setCurrentWidget(rec_widget)
 
     def clickPre(self):
+
         pre_widget = PreWidget(self)
         pre_widget.fameBtn.clicked.connect(self.clickFame)
         pre_widget.recommendBtn.clicked.connect(self.clickRec)
@@ -89,6 +90,7 @@ class MainWindow(QMainWindow):
         self.central_widget.setCurrentWidget(pre_widget)
 
     def clickCla(self):
+
         cla_widget = ClaWidget(self)
         cla_widget.fameBtn.clicked.connect(self.clickFame)
         cla_widget.recommendBtn.clicked.connect(self.clickRec)
@@ -107,6 +109,7 @@ class MainWindow(QMainWindow):
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
+
 
     def clickSub_side(self):
         rec_widget = Sub_SideWidget1(self)
@@ -272,7 +275,6 @@ class StartWidget(QWidget):
         self.adv.resize(700, 700)
         self.adv.move(50, 200)
 
-
 class OrderWidget(QWidget):
     def __init__(self, parent=None):
         super(OrderWidget, self).__init__(parent)
@@ -295,10 +297,12 @@ class FameWidget(QWidget):
     def __init__(self, parent=None):
         super(FameWidget, self).__init__(parent)
 
+
         self.famePz = QLabel(self)
         self.famePz.resize(800, 950)
         pixmap = QPixmap("images/famePizza.png")
         self.famePz.setPixmap(QPixmap(pixmap))
+
 
         self.fameBtn = QPushButton(self)
         self.fameBtn.resize(200, 100)
@@ -319,6 +323,7 @@ class FameWidget(QWidget):
         opacity = QGraphicsOpacityEffect(self.fameBtn)
         opacity.setOpacity(0)
         self.fameBtn.setGraphicsEffect(opacity)
+
 
         opacity = QGraphicsOpacityEffect(self.recommendBtn)
         opacity.setOpacity(0)
@@ -378,7 +383,7 @@ class RecWidget(QWidget):
         self.pz1.setPixmap(QPixmap("images/starChefSignature.jpg"))
         self.pz1.setGeometry(QRect(80, 350, 200, 200))
 
-        self.pzName1 = QLabel("스타 쉐프 시그니쳐", self)
+        self.pzName1= QLabel("스타 쉐프 시그니쳐",self)
         self.pzName1.move(80, 560)
         self.pzName1.setFont(QFont("여기어때 잘난체 OTF", 10))
 
@@ -386,7 +391,7 @@ class RecWidget(QWidget):
         self.pzPrice1.move(80, 580)
         self.pzPrice1.setFont(QFont("여기어때 잘난체 OTF", 9))
 
-        self.pzExplain1 = QLabel("#드라이에이징_스테이크 #트러플", self)
+        self.pzExplain1 = QLabel("#드라이에이징_스테이크 #트러플",self)
         self.pzExplain1.move(80, 600)
         self.pzExplain1.setFont(QFont("여기어때 잘난체 OTF", 8))
         self.pzExplain1.setStyleSheet("Color : gray")
@@ -441,7 +446,7 @@ class RecWidget(QWidget):
         self.pz3Btn.resize(200, 260)
         self.pz3Btn.move(520, 350)
 
-        self.pz4 = QLabel(self)
+        self.pz4= QLabel(self)
         self.pz4.setPixmap(QPixmap("images/starChefSignature.jpg"))
         self.pz4.setGeometry(QRect(80, 640, 200, 200))
 
@@ -504,7 +509,6 @@ class RecWidget(QWidget):
         self.pz6Btn.resize(200, 260)
         self.pz6Btn.move(520, 640)
 
-
 class AboutWidget(QWidget):
     def __init__(self, parent=None):
         super(AboutWidget, self).__init__(parent)
@@ -550,14 +554,20 @@ class AboutWidget(QWidget):
 
         cb.activated[str].connect(self.onActivated)
 
+
         self.pzExplain1 = QLabel("#드라이에이징_스테이크 #트러플", self)
         self.pzExplain1.move(520, 890)
         self.pzExplain1.setFont(QFont("여기어때 잘난체 OTF", 8))
         self.pzExplain1.setStyleSheet("Color : gray")
 
+
     def onActivated(self, text):
         self.lbl.setText(text)
         self.lbl.adjustSize()
+
+
+
+
 
 
 class PreWidget(QWidget):
@@ -601,7 +611,6 @@ class PreWidget(QWidget):
         opacity.setOpacity(0)
         self.classicBtn.setGraphicsEffect(opacity)
 
-
 class ClaWidget(QWidget):
     def __init__(self, parent=None):
         super(ClaWidget, self).__init__(parent)
@@ -643,14 +652,13 @@ class ClaWidget(QWidget):
         opacity.setOpacity(0)
         self.classicBtn.setGraphicsEffect(opacity)
 
-
-# 서브 메뉴 및 콜라
 class SubWidget(QWidget):
     def __init__(self, parent=None):
         super(SubWidget, self).__init__(parent)
 
         self.subBack = QLabel(self)
         self.subBack.resize(800, 950)
+
         pixmap = QPixmap("images/subMenu1.png")
         self.subBack.setPixmap(QPixmap(pixmap))
 
@@ -1148,13 +1156,14 @@ class SubAboutWidget(QWidget):
         self.pzPrice.setText(str(self.num_spin.value() * self.price) + "원")
         self.pzPrice.resize(self.pzPrice.sizeHint())
 
-    def onActivated(self, text):
-        self.lbl.setText(text)
-        self.lbl.adjustSize()
+        pixmap = QPixmap("images/toppingBack.png")
+        self.subBack.setPixmap(QPixmap(pixmap))
+
+
 
 
 if __name__ == '__main__':
-    app = QApplication([])
-    window = MainWindow()
-    window.show()
-    app.exec_()
+       app = QApplication([])
+       window = MainWindow()
+       window.show()
+       app.exec_()
